@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare | Admin Dashboard</title>
+  <link rel="stylesheet" href="static/css/admin_dashboard.css">
+  <link rel="icon" type="image/png" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="static/images/logo.png" alt="logo" class="logo">
+        <h2>MediCare | Admin</h2>
+        <p>Inventory System</p>
+      </div>
+
+      <nav>
+        <ul>
+          <li class="active"><a href="{{ url_for('admin_account') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('medicine_tab') }}">Medicine</a></li>
+          <li><a href="#">Message</a></li>
+          <li><a href="#">Notification</a></li>
+          <li><a href="#">Staff</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Trash</a></li>
+          <li><a href="{{ url_for('generate_invite') }}">Generate Invite Code</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button><a>Settings</a></button>
+        <button onclick="return confirm('Are you sure you want to log out?')"><a href="{{ url_for('logout') }}">Log out</a></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Dashboard</h1>
+        <div class="topbar-icons">
+          <span>🔍</span>
+          <span>🔔</span>
+          <span>👤 Admin</span>
+        </div>
+      </header>
+
+      <section class="stats">
+        <div class="card total">
+          <h4>Total Medicines</h4>
+          <h2>2,847</h2>
+          <p>↑12% from last month</p>
+        </div>
+        <div class="card low">
+          <h4>Low Stock Items</h4>
+          <h2>47</h2>
+          <p>⚠ Needs attention</p>
+        </div>
+        <div class="card returned">
+          <h4>Returned Items</h4>
+          <h2>6</h2>
+          <p>↘ 3% from last month</p>
+        </div>
+        <div class="card expired">
+          <h4>Expired Items</h4>
+          <h2>23</h2>
+          <p>🕓 Review required</p>
+        </div>
+      </section>
+
+      <section class="main-grid">
+        <div class="chart-section">
+          <h3>Stock Consumption Overview</h3>
+          <canvas id="stockChart"></canvas>
+        </div>
+
+        <div class="restock-section">
+          <h3>Upcoming Restock</h3>
+          <ul>
+            <li class="urgent">Paracetamol 500mg - Expected: Tomorrow</li>
+            <li class="medium">Amoxicillin 250mg - Expected: Nov 15</li>
+            <li class="normal">Disposable Gloves - Expected: Nov 18</li>
+            <li class="low">Ibuprofen 400mg - Expected: Nov 20</li>
+          </ul>
+        </div>
+
+        <div class="medicine-categories">
+          <h3>Medicine Categories</h3>
+          <div class="categories-grid">
+            <div class="cat-box">💊 Essential Medication<br><span>342 items</span></div>
+            <div class="cat-box">🧤 Personal Protection<br><span>287 items</span></div>
+            <div class="cat-box">🩹 First Aid Tool<br><span>156 items</span></div>
+            <div class="cat-box">🧴 Wound Care Items<br><span>198 items</span></div>
+            <div class="cat-box">🔬 Diagnostic Tools<br><span>423 items</span></div>
+            <div class="cat-box">📦 Others<br><span>89 items</span></div>
+            
+            <a class="inventorydb" href="/Inventory Index">Click here to proceed to Inventory Database</a>
+          </div>
+        </div>
+
+        <div class="orders-summary">
+          <h3>Orders Summary</h3>
+          <div class="orders-grid">
+            <div class="order-box green">✅ Completed Orders<br><span>127</span></div>
+            <div class="order-box yellow">🕓 Pending Orders<br><span>23</span></div>
+            <div class="order-box blue">🚚 Returned Items<br><span>15</span></div>
+            <div class="order-box red">❌ Cancelled Orders<br><span>7</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Chart.js Script -->
+  <script>
+    const ctx = document.getElementById('stockChart');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: [
+          'Essential Medication',
+          'Personal Protection',
+          'First Aid Tool',
+          'Wound Care Items',
+          'Diagnostic Tools',
+          'Others'
+        ],
+        datasets: [{
+          data: [342, 287, 156, 198, 423, 89],
+          backgroundColor: [
+            '#4CAF50',
+            '#8BC34A',
+            '#FFC107',
+            '#FF5722',
+            '#2196F3',
+            '#9E9E9E'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'right',
+            labels: {
+              boxWidth: 15,
+              color: '#333'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

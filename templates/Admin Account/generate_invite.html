@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare | Generate Invite Code</title>
+  <link rel="icon" type="image/png" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+  <style>
+    .invite-container {
+      position: absolute;
+      top: 47%;
+      left: calc(50% + 120px);
+      transform: translate(-85%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f3f3f3;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .invite-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .invite-box h1 {
+      color: #d95555;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .invite-code {
+      font-size: 24px;
+      font-weight: 700;
+      color: #b63e3e;
+      background: #fff5f5;
+      padding: 12px 25px;
+      border-radius: 10px;
+      border: 1px solid #d95555;
+      display: inline-block;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    /* ✅ New button style */
+    .copy-btn {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .copy-btn:hover {
+      background: #3b8c41;
+    }
+
+    .back-btn {
+      margin-top: 20px;
+      background: #d95555;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: #b63e3e;
+    }
+  </style>
+</head>
+<body>
+  <div class="invite-container">
+    <div class="invite-box">
+      <h1>✅ New Invite Code Generated</h1>
+      
+      <div class="invite-code" id="inviteCode">{{ code }}</div><br>
+      
+      <!-- ✅ New Copy Button -->
+      <button class="copy-btn" onclick="copyCode()">Copy Code</button><br>
+      
+      <a href="/Admin Account" class="back-btn">← Back to Dashboard</a>
+    </div>
+  </div>
+
+  <!-- ✅ Copy to Clipboard Script -->
+  <script>
+    function copyCode() {
+      const code = document.getElementById("inviteCode").textContent.trim();
+      navigator.clipboard.writeText(code)
+        .then(() => {
+          alert("✅ Invite code copied to clipboard!");
+        })
+        .catch(err => {
+          console.error("Failed to copy text: ", err);
+        });
+    }
+  </script>
+</body>
+</html>

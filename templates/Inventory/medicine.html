@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare | Medicine Categories</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/medicine_style_extra.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" class="logo">
+        <h2>MediCare | Admin</h2>
+        <p>Inventory System</p>
+      </div>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('admin_account') }}">Dashboard</a></li>
+            <li class="active"><a href="{{ url_for('medicine_tab') }}">Medicine</a></li>
+            <li><a href="#">Message</a></li>
+            <li><a href="#">Notification</a></li>
+            <li><a href="#">Staff</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Trash</a></li>
+            <li><a href="{{ url_for('generate_invite') }}">Generate Invite Code</a></li>
+        </ul>
+    </nav>
+
+      <div class="sidebar-footer">
+        <button><a>Settings</a></button>
+        <button onclick="return confirm('Are you sure you want to log out?')"><a href="{{ url_for('logout') }}">Log out</a></button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>Medicine Categories</h1>
+        <div class="topbar-icons">
+          <span>🔍</span>
+          <span>🔔</span>
+          <span>👤 Admin</span>
+        </div>
+      </header>
+
+      <section class="medicine-grid">
+        <a href="" class="medicine-card">
+          <img class="medpics" src="static/images/med_essential.png" alt="Essential medication">
+          <div class="med-info">
+            <h3>Essential Medication</h3>
+            <p>342 items</p>
+          </div>
+        </a>
+
+        <a href="{{ url_for('medicine_category', category='protection') }}" class="medicine-card">
+          <img class="medpics" src="{{ url_for('static', filename='images/med_protection.png') }}" alt="Personal Protection">
+          <div class="med-info">
+            <h3>Personal Protection</h3>
+            <p>287 items</p>
+          </div>
+        </a>
+
+        <a href="{{ url_for('medicine_category', category='firstaid') }}" class="medicine-card">
+          <img class="medpics" src="{{ url_for('static', filename='images/med_firstaid.png') }}" alt="First Aid Tool">
+          <div class="med-info">
+            <h3>First Aid Tool</h3>
+            <p>156 items</p>
+          </div>
+        </a>
+
+        <a href="{{ url_for('medicine_category', category='woundcare') }}" class="medicine-card">
+          <img class="medpics" src="{{ url_for('static', filename='images/med_wound.png') }}" alt="Wound Care Items">
+          <div class="med-info">
+            <h3>Wound Care Items</h3>
+            <p>198 items</p>
+          </div>
+        </a>
+
+        <a href="{{ url_for('medicine_category', category='diagnostic') }}" class="medicine-card">
+          <img class="medpics" src="{{ url_for('static', filename='images/med_diagnostic.png') }}" alt="Diagnostic Tools">
+          <div class="med-info">
+            <h3>Diagnostic Tools</h3>
+            <p>423 items</p>
+          </div>
+        </a>
+
+        <a href="{{ url_for('medicine_category', category='others') }}" class="medicine-card">
+          <img class="medpics" src="{{ url_for('static', filename='images/med_others.png') }}" alt="Others">
+          <div class="med-info">
+            <h3>Others</h3>
+            <p>89 items</p>
+          </div>
+        </a>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

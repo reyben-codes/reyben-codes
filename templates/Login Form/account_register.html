@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Register</title>
+  <link rel="icon" type="image/png" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="static/css/account_register_style.css">
+</head>
+
+<body>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div id="popup" class="popup {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+  <div class="container">
+    <img src="static/images/Logo.png" alt="Logo" class="logo">
+    <h1>Register</h1>
+    <p class="subtitle">Create your Account</p>
+
+    <form class="form" action="/register" method="POST">
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>User Name</label>
+      <input type="text" name="username" placeholder="Enter username" required>
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>First Name</label>
+      <input type="text" name="firstname" placeholder="Enter first name" required>
+
+      <label>Middle Name</label>
+      <input type="text" name="middlename" placeholder="Enter middle name">
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>Last Name</label>
+      <input type="text" name="lastname" placeholder="Enter last name" required>
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>Email Address</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>Password</label>
+      <div class="password-group">
+        <input id="make-password" type="password" name="createpassword" placeholder="Create password" required>
+        <input id="confirm-password" type="password" name="accountpassword" placeholder="Confirm password" required>
+        <img id="eye" style="width: 30px; cursor: pointer" src="static/images/eyeicon close.png">
+      </div>
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>Select Role</label>
+      <select name="accrole">
+        <option selected disabled>Choose your role</option>
+        <option>Admin</option>
+        <option>Staff</option>
+      </select>
+
+      <div class="row">
+        <div>
+          <label>Phone Number</label>
+          <input type="text" name="phone" placeholder="Enter phone number">
+        </div>
+        <div>
+          <label><a style="color: red; font-size: 12px"><b>*</b></a>Date of Birth</label>
+          <input type="date" name="birthdate" required>
+        </div>
+      </div>
+
+      <label>Address</label>
+      <input type="text" name="address" placeholder="Enter your address">
+
+      <label><a style="color: red; font-size: 16px"><b>*</b></a>Invite Code</label>
+      <input type="text" name="invite_code" placeholder="Enter your code" required>
+
+      <div class="checkbox">
+        <input class="checkme" type="checkbox" id="terms">
+        <label for="terms">I agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a></label>
+      </div>
+
+      <button type="submit" class="btn">Create Account</button>
+
+      <p class="login-link">Do you have an account? <a href="/">Log in</a></p>
+    </form>
+  </div>
+
+<script>
+  let eyeicon = document.getElementById("eye");
+  let password = document.getElementById("make-password");
+  let confPass = document.getElementById("confirm-password");
+
+  eyeicon.onclick = function(){
+    if(password.type == "password" && confPass.type == "password"){
+      password.type = "text";
+      confPass.type = "text";
+      eyeicon.src="static/images/eyeicon open.png";
+    }
+    else{
+      password.type = "password";
+      confPass.type = "password";
+      eyeicon.src="static/images/eyeicon close.png";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.querySelector('.popup');
+  if (popup) {
+    popup.classList.add('show');
+    setTimeout(() => {
+      popup.classList.remove('show');
+      setTimeout(() => popup.remove(), 600);
+    }, 3000);
+  }
+});
+
+</script>
+
+</body>
+</html>

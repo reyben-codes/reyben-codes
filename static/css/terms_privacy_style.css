@@ -1,0 +1,95 @@
+/* ======== MediCare Policy Page Style ======== */
+
+body {
+  background: linear-gradient(135deg, #e0f2f1, #ffffff);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  font-family: 'Poppins', sans-serif;
+}
+
+body, p, li {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+
+.policy-container {
+  max-width: 900px;
+  background-color: #fff;
+  margin: 50px auto;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  line-height: 1.7;
+}
+
+h1 {
+  text-align: center;
+  color: #e57373;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+p, li {
+  font-size: 15px;
+  color: #444;
+}
+
+h2 {
+  margin-top: 25px;
+  color: #e57373;
+  font-size: 1.3em;
+  border-left: 5px solid #e57373;
+  padding-left: 10px;
+}
+
+ul {
+  margin: 10px 0 20px 25px;
+}
+
+strong {
+  color: #000;
+}
+
+a {
+  color: #e57373;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Scrollbar Design ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #009688;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00796b;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 600px) {
+  .policy-container {
+    padding: 25px 20px;
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+}

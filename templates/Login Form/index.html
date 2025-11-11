@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="static/css/loginstyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>MediCare | Login Page</title>
+  
+</head>
+
+<body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div id="popup" class="popup {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+  <div class="container">
+    <div class="login-card">
+      <img style="width: 50px" src="static/images/Logo.png" alt="Logo">
+
+      <h2>Welcome!</h2>
+      <p class="subtitle">Log in to your account</p>
+
+      <form action="/login" method="POST">
+        <label>Email Address</label>
+        <div class="input-group">
+          <input name="email" type="email" placeholder="Enter your email" required>
+        </div>
+
+        <label>Password</label>
+        <div class="input-group">
+          <input name="accountpassword" id="wordpass" type="password" placeholder="Enter your password" required>
+          <img id="mata" style="width: 30px; cursor: pointer" src="static/images/eyeicon close.png">
+        </div>
+
+        <div class="options">
+          <label><input type="checkbox" class="checkme"> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Log in</button>
+      </form>
+
+      <div class="divider">
+        <span>Or continue with</span>
+      </div>
+
+      <button class="google-btn">
+        <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google icon">
+        Google
+      </button>
+
+      <p class="invite">Have an invite code? <a href="/Account Register">Click here</a></p>
+
+    </div>
+  </div>
+
+<script>
+  let eyeicon = document.getElementById("mata");
+  let password = document.getElementById("wordpass");
+
+  eyeicon.onclick = function(){
+    if(password.type == "password"){
+      password.type = "text";
+      eyeicon.src="static/images/eyeicon open.png";
+    }
+    else{
+      password.type = "password";
+      eyeicon.src="static/images/eyeicon close.png";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.querySelector('.popup');
+  if (popup) {
+    popup.classList.add('show'); // enter animation
+    setTimeout(() => {
+      popup.classList.remove('show'); // exit animation
+      setTimeout(() => popup.remove(), 600); // remove after exit
+    }, 3000); // visible for 3 seconds
+  }
+});
+
+</script>
+
+</body>
+</html>

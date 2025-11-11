@@ -1,0 +1,168 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: #fff8f8;
+  width: 380px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  border-top: 8px solid #e57373;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #000;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form {
+  text-align: left;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  font-size: 13px;
+  outline: none;
+  background-color: #fff;
+}
+
+input:focus, select:focus {
+  border: 1px solid #f7a8a8;
+  box-shadow: 0 0 5px rgba(255,150,150,0.5);
+}
+
+.password-group {
+  display: flex;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.checkme {
+  width: auto;
+  height: auto;
+  box-shadow: none;
+  border: none;
+  background: none;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.checkbox a {
+  color: #f67b7b;
+  text-decoration: none;
+}
+
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  background-color: #fca4a4;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(255,100,100,0.3);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #f88b8b;
+  transform: translateY(-2px);
+}
+
+.login-link {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #f67b7b;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.popup {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  z-index: 9999;
+}
+
+.popup.show {
+  top: 25px;
+  opacity: 1;
+}
+
+.popup.success {
+  background-color: #4CAF50;
+}
+
+.popup.danger {
+  background-color: #f44336;
+}
+
+.popup.info {
+  background-color: #2196F3;
+}
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="static/images/favicon.ico">
+    <link rel="stylesheet" href="static/css/inventorystyle.css">
+    <title>Inventory Database</title>
+</head>
+<body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div id="popup" class="popup {{ category }}">{{ message }}</div>
+    {% endfor %}
+  
+
+    <script>
+      const popup = document.getElementById('popup');
+      if (popup) {
+        popup.classList.add('show');
+        setTimeout(() => {
+          popup.classList.remove('show');
+        }, 2500);
+      }
+    </script>
+    
+  {% endif %}
+{% endwith %}
+
+<h1>List of Medicines</h1>
+
+<table>
+    <tr>
+        <th>Medicine ID</th>
+        <th>Generic Name</th>
+        <th>Brand Name</th>
+        <th>Type</th>
+        <th>Adults/Kids</th>
+        <th>Variant</th>
+    </tr>
+    {% for med in medicine %}
+    <tr>
+        <td>{{ med.MedicineID }}</td>
+        <td>{{ med.MedGenName }}</td>
+        <td>{{ med.BrandName }}</td>
+        <td>{{ med.MedType }}</td>
+        <td>{{ med.AdultOrKids }}</td>
+        <td>{{ med.MedVariant }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div style="text-align: center; margin-top: 20px;">
+    <form class="no_bg" action="/delete_all" method="POST">
+        <button class="Delete_all_button" type="submit"
+                onclick="return confirm('Warning! This will permanently delete all of your records! Are you sure you want to continue?')">
+            <b>Delete All Records</b>
+        </button>
+    </form>
+</div>
+
+<h2>Add New Medicines</h2>
+<form action="/add" method="POST">
+    <input type="text" name="MedGenName" placeholder="Generic Name" required><br>
+    <input type="text" name="BrandName" placeholder="Brand Name" required><br>
+    <input type="text" name="MedType" placeholder="Type" required><br>
+
+    <div class="radio-group">
+        <label><b>For:</b></label><br>
+        <div class="radio-options">
+            <label>
+                <input type="radio" name="AdultOrKids" value="Adults" required>
+                <span>Adults</span>
+            </label>
+            <label>
+                <input type="radio" name="AdultOrKids" value="Kids" required>
+                <span>Kids</span>
+            </label>
+        </div>
+    </div>
+
+    <select name="MedVariant" required>
+        <option value="" disabled selected>Select Variant</option>
+        <option value="Tablet">Tablet</option>
+        <option value="Capsule">Capsule</option>
+        <option value="Syrup">Syrup</option>
+        <option value="Injection">Injection</option>
+        <option value="Ointment">Ointment</option>
+        <option value="Inhaler">Inhaler</option>
+        <option value="Suppository">Suppository</option>
+        <option value="Drops">Drops</option>
+        <option value="Patch">Patch</option>
+        <option value="Powder">Powder</option>
+    </select><br>
+
+    <button class="submit_button" type="submit"><b>Add Medicine</b></button>
+</form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const popup = document.querySelector('.popup');
+  if (popup) {
+    popup.classList.add('show'); // animate in
+    setTimeout(() => {
+      popup.classList.remove('show'); // animate out
+      setTimeout(() => popup.remove(), 600); // remove element
+    }, 3000); // stays visible for 3s
+  }
+});
+</script>
+
+</body>
+</html>

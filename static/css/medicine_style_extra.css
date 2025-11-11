@@ -1,0 +1,67 @@
+/* Medicine Page Extra Styling Only */
+
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding-bottom: 40px;
+}
+
+.medicine-card {
+  display: flex;
+  align-items: center;
+  background: #fff7f7;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.medicine-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.medicine-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+
+.med-info h3 {
+  color: #4a1d1d;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.med-info p {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Make sure sidebar still fits the screen */
+.sidebar {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Adjust responsiveness */
+@media (max-width: 700px) {
+  .medicine-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .medicine-card img {
+    margin: 0 0 10px 0;
+  }
+}
+
+.medicine-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.medpics {
+  border-radius: 10px;
+}
